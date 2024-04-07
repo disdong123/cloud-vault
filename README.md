@@ -1,19 +1,11 @@
-# monorepo-template
+# Cloud vault
 
-### 생성
-```
-npm init -w ./packages/<name> -y
-```
+[aws-vault](https://github.com/99designs/aws-vault) 따라하기
 
-또한, tsconfig.json 의 references 에 path 를 명시해줘야 합니다. 
+### TODO
 
-### 실행
-```
-npm run build
-npm run start:server
-```
-
-
-### 참고
-- https://jeonghwan-kim.github.io/2022/07/31/npm-workspace
-- https://github.com/david-szabo97/example-typescript-npm-workspaces
+- Test SDK 
+- https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/credentials-chain.html
+- --ecs-server: https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/auth/credentials/ContainerCredentialsProvider.html
+- --ec2-server: https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/auth/credentials/InstanceProfileCredentialsProvider.html
+- Use keychain for credentials
