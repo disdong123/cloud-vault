@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "build": "tsc --build",
-    "start:main": "npm run build && npm run start -w @disdong/main"
+    "start:main": "npm run build && npm run start -w @disdong/main",
+    "test": "jest --setupFiles dotenv/config --config ./jest.config.js"
   },
   "author": "",
   "license": "ISC",
@@ -12,11 +13,19 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@babel/core": "^7.24.4",
+    "@babel/plugin-transform-runtime": "^7.24.3",
+    "@babel/preset-env": "^7.24.4",
+    "@babel/preset-typescript": "^7.24.1",
+    "@types/jest": "^29.5.12",
     "@types/node": "^18.15.3",
+    "babel-jest": "^29.7.0",
     "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^29.7.0",
     "prettier": "^2.8.4",
+    "ts-jest": "^29.1.2",
     "ts-node": "^10.9.1",
     "typescript": "^4.7.4"
   },
