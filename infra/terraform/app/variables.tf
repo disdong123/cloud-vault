@@ -29,12 +29,12 @@ variable "assume_role_policy" {
     Version = "2012-10-17"
     Statement = [
       {
+        Sid    = "AssumeRoleTest"
         Action = "sts:AssumeRole"
         Effect = "Allow"
-        Sid    = ""
         Principal = {
-          Service = "ec2.amazonaws.com"
-        }
+          AWS = "arn:aws:iam::574166935152:user/user-role"
+        },
       },
     ]
   }
