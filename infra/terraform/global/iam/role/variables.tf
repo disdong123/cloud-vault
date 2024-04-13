@@ -27,3 +27,11 @@ variable "assume_role_policy" {
     ]
   }
 }
+
+variable "role_instance_profile_name" {
+  default = ""
+}
+
+variable "create_instance_profile" {
+  default = false
+}

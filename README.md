@@ -7,10 +7,10 @@
 - [x] user 생성
 - [x] policy 없이 s3 접근
 - [x] policy attach 후 s3 접근
-- [ ] role 없이 s3 접근
-- [ ] role attach 후 s3 접근
+- [x] role 없이 s3 접근
+- [x] role attach 후 s3 접근
 - [ ] instance profile 검증
-- [ ] default credential chain 검증
+- [x] default credential chain 검증
 - [ ] web identity token 검증
 - [ ] eks instance profile 검증
 - [ ] eks service account 검증

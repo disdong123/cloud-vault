@@ -33,7 +33,7 @@ describe('iam user 가 어떠한 권한도 가지고 있지 않고', () => {
       } as AwsCredentialIdentity,
     });
 
-    console.log(await client.send(command));
+    expect(async () => await client.send(command)).not.toThrow();
   });
 
   test('role 에 trust relationship 설정이 되어있지 않으면, 이 role 을 assume 할 때 access denied 에러가 발생한다.', async () => {
