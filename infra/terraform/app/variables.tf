@@ -39,3 +39,19 @@ variable "assume_role_policy" {
     ]
   }
 }
+
+variable "ec2_assume_role_policy" {
+  default = {
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid    = "Ec2AssumeRoleTest"
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
+      },
+    ]
+  }
+}
