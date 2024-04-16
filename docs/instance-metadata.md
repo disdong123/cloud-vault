@@ -2,6 +2,8 @@
 
 role 과 instance profile, 그리고 instance metadata 에 대해 알아봅니다.
 
+## 
+
 ### role
 
 role 은 user 와 마찬가지로 policy 를 통해 특정 리소스에 대한 권한을 보유합니다. 다만 user 와 달리, role 은 누군가가 맡을(assume) 수 있습니다.
@@ -28,11 +30,12 @@ variable "assume_role_policy" {
 
 만약 위 처럼 user-role 이라는 user 가 role 의 trust-relationship 에 설정되어 있고, user-role 의 access/secret key 를 통해 SDK 에 Credentials 을 제공한 상태라면 role 을 assume 하여 role 에 정의된 권한을 수행할 수 있게 됩니다. 
 
-### instance metadata
+### instance metadata service
 
-instance metadata 는 hostname, profile, security-group 등 실행 중인 인스턴스를 관리하는 데 사용할 수 있는 인스턴스 관련 데이터로, ec2 가 생성되면 ec2 instance metadata 가 자동으로 연결되어 정보를 제공합니다.
+instance metadata 는 hostname, profile, security-group 등 실행 중인 인스턴스를 관리하는 데 사용할 수 있는 인스턴스 관련 데이터로, IMDS(instance metadata service) 에 의해 제공됩니다.
 
-일반적으로 aws, gcp, azure 등의 클라우드 서비스는 IMDS(instance metadata service) 의 ip 를 link-local-address 중 하나인 169.254.169.254 를 이용합니다. 실제 ec2 내에서 아래와 같이 요청하면 응답결과를 확인할 수 있습니다.
+IMDS 는 ec2 가 생성되면 ec2 instance metadata 가 자동으로 연결되는데, 일반적으로 aws, gcp, azure 등의 클라우드 서비스는 IMDS 의 ip 를 link-local-address 중 하나인 169.254.169.254 를 이용합니다. 
+실제 ec2 내에서 아래와 같이 요청하면 응답결과를 확인할 수 있습니다.
 
 (link-local-address 는 사설 IP 대역과 비슷하게 특수한 목적으로 설계된 IP 대역으로, RFC 6890에 정의되어 있으며 169.254.0.0/16 을 이용합니다. 이는 직접 연결된 하위 네트워크 내에서만 유효한 주소로, 외부에서 접근할 수 없습니다.)
 
@@ -146,5 +149,15 @@ curl http://169.254.169.254/latest/meta-data/iam/security-credentials/role-with-
 instance-profile 이외에 어떠한 설정도 하지 않았다면 IMDS 를 이용합니다.
 
 만약 ec2 인스턴스 내에서 aws configure 를 이용하여 access/secret key 를 등록한 상태 혹은 어플리케이션에서 별도의 정책을 이용하고 있다면 Credential provider chain 의 우선순위로 인해 IMDS 를 사용하지 않습니다.
+
+
+## aws-vault
+
+aws-vault 는 IMDS 와 credential providers chain 을 이용하여 임시 자격 증명을 가져옵니다.
+
+```
+ifconfig lo0 alias 169.254.169.254
+ifconfig lo0 -alias 169.254.169.254
+```
 
 

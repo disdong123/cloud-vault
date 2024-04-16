@@ -1,1 +1,1 @@
-const ROLE = 'local-credentials';
+export const AWS_ROLE = 'local-credentials';
