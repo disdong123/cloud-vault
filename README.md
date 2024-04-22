@@ -6,7 +6,7 @@
 
 aws-vault 는 IMDS 와 credentials provider chain 을 이용하여 자격 증명을 관리합니다.
 
-[이를](./docs/instance-metadata.md) 이해하기 위해 몇가지 테스트를 진행합니다.
+**[이를](./docs/instance-metadata.md) 이해하기 위해 몇가지 테스트를 진행합니다.**
 - [x] user 생성
   - [x] policy 없이 s3 접근
   - [x] policy attach 후 s3 접근
@@ -21,6 +21,10 @@ aws-vault 는 IMDS 와 credentials provider chain 을 이용하여 자격 증명
 - [ ] eks instance profile 검증
 - [ ] eks service account 검증
 - [ ] sdk 로 검증
+
+### keychain
+- https://github.com/99designs/go-keychain
+- https://support.apple.com/en-au/guide/keychain-access/welcome/mac
 
 ### Todo
 
